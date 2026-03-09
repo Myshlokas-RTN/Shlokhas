@@ -1,98 +1,451 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="te">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>శ్రీరామ పట్టాభిషేక సర్గ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Telugu:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            color: white;
-            overflow-x: hidden;
+        :root {
+            --bg-color: #fdfbf7;
+            --container-bg: #ffffff;
+            --text-color: #2c3e50;
+            --accent-color: #b71c1c;
+            --border-color: #eaeaea;
         }
-        header {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 10;
+
+        body.dark-mode {
+            --bg-color: #121212;
+            --container-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --accent-color: #ff8a80;
+            --border-color: #333333;
         }
-        nav ul {
-            list-style: none;
+
+        .theme-switch-wrapper {
+            position: absolute;
+            top: 20px;
+            right: 20px;
             display: flex;
-            justify-content: space-around;
-            padding: 0;
+            align-items: center;
         }
-        nav ul li {
-            margin: 0 15px;
+
+        .theme-switch {
+            display: inline-block;
+            height: 34px;
+            position: relative;
+            width: 60px;
         }
-        nav a {
-            color: white;
-            text-decoration: none;
+
+        .theme-switch input {
+            display: none;
         }
-        .hero {
-            height: 100vh;
+
+        .slider {
+            background-color: #ccc;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            background-color: #fff;
+            bottom: 4px;
+            content: "";
+            height: 26px;
+            left: 4px;
+            position: absolute;
+            transition: .4s;
+            width: 26px;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: var(--accent-color);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
+        body {
+            font-family: 'Noto Serif Telugu', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            margin: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            background-color: var(--container-bg);
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
             text-align: center;
-            margin-top: 60px;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
+            color: var(--accent-color);
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 20px;
-            padding: 20px;
-        }
-        footer {
+
+        .subtitle {
             text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            position: relative;
-            bottom: 0;
-            width: 100%;
+            font-size: 16px;
+            color: var(--text-color);
+            opacity: 0.7;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
         }
+
+        .sloka {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .sloka:hover {
+            background-color: rgba(183, 28, 28, 0.05);
+        }
+
+        body.dark-mode .sloka:hover {
+            background-color: rgba(255, 138, 128, 0.1);
+        }
+
+        .number {
+            color: var(--accent-color);
+            font-weight: bold;
+            opacity: 0.8;
+        }
+
+        /* Mobile Adjustments */
         @media (max-width: 600px) {
-            nav ul {
-                flex-direction: column;
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .sloka {
+                font-size: 16px;
             }
         }
     </style>
 </head>
+
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Rama Files</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section class="hero">
-        <h1>Welcome to Shlokhas</h1>
-        <p>Your gateway to spiritual knowledge</p>
-    </section>
-    <section class="grid">
-        <!-- Sample content for grid. This will be replaced with Rama folder files -->
-        <div class="file">File 1</div>
-        <div class="file">File 2</div>
-        <div class="file">File 3</div>
-        <div class="file">File 4</div>
-    </section>
-    <footer>
-        <p>© 2026 Shlokhas. All rights reserved.</p>
-    </footer>
+
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+        </label>
+    </div>
+
+    <div class="container">
+        <h1>శ్రీరామ పట్టాభిషేక సర్గ</h1>
+        <div class="subtitle">శ్రీమద్రామాయణం - యుద్ధకాండం (128వ సర్గ)</div>
+
+        <div class="sloka">శిరస్యంజలిమాధాయ కైకేయ్యానందవర్ధనః |<br>బభాషే భరతో జ్యేష్ఠం రామం సత్యపరాక్రమం <span
+                class="number">|| 1 ||</span></div>
+        <div class="sloka">పూజితా మామికా మాతా దత్తం రాజ్యమిదం మమ |<br>తద్దదామి పునస్తుభ్యం యథా త్వమదదా మమ <span
+                class="number">|| 2 ||</span></div>
+        <div class="sloka">ధురమేకాకినా న్యస్తామృషభేణ బలీయసా |<br>కిశోరవద్గురుం భారం న వోఢుమహముత్సహే <span
+                class="number">|| 3 ||</span></div>
+        <div class="sloka">వారివేగేన మహతా భిన్నః సేతురివ క్షరన్ |<br>దుర్బంధనమిదం మన్యే రాజ్యచ్ఛిద్రమసంవృతం <span
+                class="number">|| 4 ||</span></div>
+        <div class="sloka">గతిం ఖర ఇవాశ్వస్య హంసస్యేవ చ వాయసః |<br>నాన్వేతుముత్సహే రామ తవ మార్గమరిందమ <span
+                class="number">|| 5 ||</span></div>
+        <div class="sloka">యథా చారోపితో వృక్షో జాతశ్చాంతర్నివేశనే |<br>మహాంశ్చ సుదురారోహో మహాస్కంధః ప్రశాఖవాన్ <span
+                class="number">|| 6 ||</span></div>
+        <div class="sloka">శీర్యేత పుష్పితో భూత్వా న ఫలాని ప్రదర్శయన్ |<br>తస్య నానుభవేదర్థం యస్య హేతోః స రోప్యతే <span
+                class="number">|| 7 ||</span></div>
+        <div class="sloka">ఏషోపమా మహాబాహో త్వదర్థం వేత్తుమర్హసి |<br>యద్యస్మాన్మనుజేంద్ర త్వం భక్తాన్భృత్యాన్న శాధి హి
+            <span class="number">|| 8 ||</span>
+        </div>
+        <div class="sloka">జగదద్యాభిషిక్తం త్వామనుపశ్యతు సర్వతః |<br>ప్రతపంతమివాదిత్యం మధ్యాహ్నే దీప్తతేజసం <span
+                class="number">|| 9 ||</span></div>
+        <div class="sloka">తూర్యసంఘాతనిర్ఘోషైః కాంచీనూపురనిస్వనైః |<br>మధురైర్గీతశబ్దైశ్చ ప్రతిబుధ్యస్వ రాఘవ <span
+                class="number">|| 10 ||</span></div>
+        <div class="sloka">యావదావర్తతే చక్రం యావతీ చ వసుంధరా |<br>తావత్త్వమిహ సర్వస్య స్వామిత్వమనువర్తయ <span
+                class="number">|| 11 ||</span></div>
+        <div class="sloka">భరతస్య వచః శ్రుత్వా రామః పరపురంజయః |<br>తథేతి ప్రతిజగ్రాహ నిషసాదాసనే శుభే <span
+                class="number">|| 12 ||</span></div>
+        <div class="sloka">తతః శత్రుఘ్నవచనాన్నిపుణాః శ్మశ్రువర్ధకాః |<br>సుఖహస్తాః సుశీఘ్రాశ్చ రాఘవం పర్యుపాసత <span
+                class="number">|| 13 ||</span></div>
+        <div class="sloka">పూర్వం తు భరతే స్నాతే లక్ష్మణే చ మహాబలే |<br>సుగ్రీవే వానరేంద్రే చ రాక్షసేంద్రే విభీషణే <span
+                class="number">|| 14 ||</span></div>
+        <div class="sloka">విశోధితజటః స్నాతశ్చిత్రమాల్యానులేపనః |<br>మహార్హవసనో రామస్తస్థౌ తత్ర శ్రియా జ్వలన్ <span
+                class="number">|| 15 ||</span></div>
+        <div class="sloka">ప్రతికర్మ చ రామస్య కారయామాస వీర్యవాన్ |<br>లక్ష్మణస్య చ లక్ష్మీవానిక్ష్వాకుకులవర్ధనః <span
+                class="number">|| 16 ||</span></div>
+        <div class="sloka">ప్రతికర్మ చ సీతాయాః సర్వా దశరథస్త్రియః |<br>ఆత్మనైవ తదా చక్రుర్మనస్విన్యో మనోహరం <span
+                class="number">|| 17 ||</span></div>
+        <div class="sloka">తతో వానరపత్నీనాం సర్వాసామేవ శోభనం |<br>చకార యత్నాత్కౌసల్యా ప్రహృష్టా పుత్రవత్సలా <span
+                class="number">|| 18 ||</span></div>
+        <div class="sloka">తతః శత్రుఘ్నవచనాత్సుమంత్రో నామ సారథిః |<br>యోజయిత్వాఽభిచక్రామ రథం సర్వాంగశోభనం <span
+                class="number">|| 19 ||</span></div>
+        <div class="sloka">అర్కమండలసంకాశం దివ్యం దృష్ట్వా రథోత్తమం |<br>ఆరురోహ మహాబాహూ రామః సత్యపరాక్రమః <span
+                class="number">|| 20 ||</span></div>
+        <div class="sloka">సుగ్రీవో హనుమాంశ్చైవ మహేంద్రసదృశద్యుతీ |<br>స్నాతౌ దివ్యనిభైర్వస్త్రైర్జగ్మతుః శుభకుండలౌ
+            <span class="number">|| 21 ||</span>
+        </div>
+        <div class="sloka">వరాభరణసంపన్నా యయుస్తాః శుభకుండలాః |<br>సుగ్రీవపత్న్యః సీతా చ ద్రష్టుం నగరముత్సుకా <span
+                class="number">|| 22 ||</span></div>
+        <div class="sloka">అయోధ్యాయాం తు సచివా రాజ్ఞో దశరథస్య యే |<br>పురోహితం పురస్కృత్య మంత్రయామాసురర్థవత్ <span
+                class="number">|| 23 ||</span></div>
+        <div class="sloka">అశోకో విజయశ్చైవ సుమంత్రశ్చైవ సంగతాః |<br>మంత్రయన్రామవృద్ధ్యర్థమృద్ధ్యర్థం నగరస్య చ <span
+                class="number">|| 24 ||</span></div>
+        <div class="sloka">సర్వమేవాభిషేకార్థం జయార్హస్య మహాత్మనః |<br>కర్తుమర్హథ రామస్య యద్యన్మంగళపూర్వకం <span
+                class="number">|| 25 ||</span></div>
+        <div class="sloka">ఇతి తే మంత్రిణః సర్వే సందిశ్య తు పురోహితం |<br>నగరాన్నిర్యయుస్తూర్ణం రామదర్శనబుద్ధయః <span
+                class="number">|| 26 ||</span></div>
+        <div class="sloka">హరియుక్తం సహస్రాక్షో రథమింద్ర ఇవానఘః |<br>ప్రయయౌ రథమాస్థాయ రామో నగరముత్తమం <span
+                class="number">|| 27 ||</span></div>
+        <div class="sloka">జగ్రాహ భరతో రశ్మీఞ్శత్రుఘ్నశ్ఛత్రమాదదే |<br>లక్ష్మణో వ్యజనం తస్య మూర్ధ్ని సంపర్యవీజయత్ <span
+                class="number">|| 28 ||</span></div>
+        <div class="sloka">శ్వేతం చ వాలవ్యజనం జగ్రాహ పురతః స్థితః |<br>అపరం చంద్రసంకాశం రాక్షసేంద్రో విభీషణః <span
+                class="number">|| 29 ||</span></div>
+        <div class="sloka">ఋషిసంఘైస్తదాఽఽకాశే దేవైశ్చ సమరుద్గణైః |<br>స్తూయమానస్య రామస్య శుశ్రువే మధురధ్వనిః <span
+                class="number">|| 30 ||</span></div>
+        <div class="sloka">తతః శత్రుంజయం నామ కుంజరం పర్వతోపమం |<br>ఆరురోహ మహాతేజాః సుగ్రీవః ప్లవగర్షభః <span
+                class="number">|| 31 ||</span></div>
+        <div class="sloka">నవనాగసహస్రాణి యయురాస్థాయ వానరాః |<br>మానుషం విగ్రహం కృత్వా సర్వాభరణభూషితాః <span
+                class="number">|| 32 ||</span></div>
+        <div class="sloka">శంఖశబ్దప్రణాదైశ్చ దుందుభీనాం చ నిస్స్వనైః |<br>ప్రయయౌ పురుషవ్యాఘ్రస్తాం పురీం హర్ంయమాలినీం
+            <span class="number">|| 33 ||</span>
+        </div>
+        <div class="sloka">దదృశుస్తే సమాయాంతం రాఘవం సపురస్సరం |<br>విరాజమానం వపుషా రథేనాతిరథం తదా <span
+                class="number">|| 34 ||</span></div>
+        <div class="sloka">తే వర్ధయిత్వా కాకుత్స్థం రామేణ ప్రతినందితాః |<br>అనుజగ్ముర్మహాత్మానం భ్రాతృభిః పరివారితం
+            <span class="number">|| 35 ||</span>
+        </div>
+        <div class="sloka">అమాత్యైర్బ్రాహ్మణైశ్చైవ తథా ప్రకృతిభిర్వృతః |<br>శ్రియా విరురుచే రామో నక్షత్రైరివ చంద్రమాః
+            <span class="number">|| 36 ||</span>
+        </div>
+        <div class="sloka">స పురోగామిభిస్తూర్యైస్తాలస్వస్తికపాణిభిః |<br>ప్రవ్యాహరద్భిర్ముదితైర్మంగళాని యయౌ వృతః <span
+                class="number">|| 37 ||</span></div>
+        <div class="sloka">అక్షతం జాతరూపం చ గావః కన్యాస్తథా ద్విజాః |<br>నరా మోదకహస్తాశ్చ రామస్య పురతో యయుః <span
+                class="number">|| 38 ||</span></div>
+        <div class="sloka">సఖ్యం చ రామః సుగ్రీవే ప్రభావం చానిలాత్మజే |<br>వానరాణాం చ తత్కర్మ రాక్షసానాం చ తద్బలం
+            |<br>విభీషణస్య సంయోగమాచచక్షే చ మంత్రిణాం <span class="number">|| 39 ||</span></div>
+        <div class="sloka">శ్రుత్వా తు విస్మయం జగ్మురయోధ్యాపురవాసినః <span class="number">|| 40 ||</span></div>
+        <div class="sloka">ద్యుతిమానేతదాఖ్యాయ రామో వానరసంవృతః |<br>హృష్టపుష్టజనాకీర్ణామయోధ్యాం ప్రవివేశ హ <span
+                class="number">|| 41 ||</span></div>
+        <div class="sloka">తతో హ్యభ్యుచ్ఛ్రయన్పౌరాః పతాకాస్తే గృహే గృహే <span class="number">|| 42 ||</span></div>
+        <div class="sloka">ఐక్ష్వాకాధ్యుషితం రంయమాససాద పితుర్గృహం <span class="number">|| 43 ||</span></div>
+        <div class="sloka">అథాబ్రవీద్రాజసుతో భరతం ధర్మిణాం వరం |<br>అర్థోపహితయా వాచా మధురం రఘునందనః <span
+                class="number">|| 44 ||</span></div>
+        <div class="sloka">పితుర్భవనమాసాద్య ప్రవిశ్య చ మహాత్మనః |<br>కౌసల్యాం చ సుమిత్రాం చ కైకేయీమభివాద్య చ <span
+                class="number">|| 45 ||</span></div>
+        <div class="sloka">యచ్చ మద్భవనం శ్రేష్ఠం సాశోకవనికం మహత్ |<br>ముక్తావైడూర్యసంకీర్ణం సుగ్రీవాయ నివేదయ <span
+                class="number">|| 46 ||</span></div>
+        <div class="sloka">తస్య తద్వచనం శ్రుత్వా భరతః సత్యవిక్రమః |<br>పాణౌ గృహీత్వా సుగ్రీవం ప్రవివేశ తమాలయం <span
+                class="number">|| 47 ||</span></div>
+        <div class="sloka">తతస్తైలప్రదీపాంశ్చ పర్యంకాస్తరణాని చ |<br>గృహీత్వా వివిశుః క్షిప్రం శత్రుఘ్నేన ప్రచోదితాః
+            <span class="number">|| 48 ||</span>
+        </div>
+        <div class="sloka">ఉవాచ చ మహాతేజాః సుగ్రీవం రాఘవానుజః |<br>అభిషేకాయ రామస్య దూతానాజ్ఞాపయ ప్రభో <span
+                class="number">|| 49 ||</span></div>
+        <div class="sloka">సౌవర్ణాన్వానరేంద్రాణాం చతుర్ణాం చతురో ఘటాన్ |<br>దదౌ క్షిప్రం స సుగ్రీవః సర్వరత్నవిభూషితాన్
+            <span class="number">|| 50 ||</span>
+        </div>
+        <div class="sloka">యథా ప్రత్యూషసమయే చతుర్ణాం సాగరాంభసాం |<br>పూర్ణైర్ఘటైః ప్రతీక్షధ్వం తథా కురుత వానరాః <span
+                class="number">|| 51 ||</span></div>
+        <div class="sloka">ఏవముక్తా మహాత్మానో వానరా వారణోపమాః |<br>ఉత్పేతుర్గగనం శీఘ్రం గరుడా ఇవ శీఘ్రగాః <span
+                class="number">|| 52 ||</span></div>
+        <div class="sloka">జాంబవాంశ్చ హనూమాంశ్చ వేగదర్శీ చ వానరః |<br>ఋషభశ్చైవ కలశాఞ్జలపూర్ణానథానయన్ <span
+                class="number">|| 53 ||</span></div>
+        <div class="sloka">నదీశతానాం పంచానాం జలం కుంభేషు చాహరన్ <span class="number">|| 54 ||</span></div>
+        <div class="sloka">పూర్వాత్సముద్రాత్కలశం జలపూర్ణమథానయత్ |<br>సుషేణః సత్త్వసంపన్నః సర్వరత్నవిభూషితం <span
+                class="number">|| 55 ||</span></div>
+        <div class="sloka">ఋషభో దక్షిణాత్తూర్ణం సముద్రాజ్జలమాహరత్ |<br>రక్తచందనశాఖాభిః సంవృతం కాంచనం ఘటం <span
+                class="number">|| 56 ||</span></div>
+        <div class="sloka">గవయః పశ్చిమాత్తోయమాజహార మహార్ణవాత్ |<br>రత్నకుంభేన మహతా శీతం మారుతవిక్రమః <span
+                class="number">|| 57 ||</span></div>
+        <div class="sloka">ఉత్తరాచ్చ జలం శీఘ్రం గరుడానిలవిక్రమః |<br>ఆజహార స ధర్మాత్మా నలః సర్వగుణాన్వితః <span
+                class="number">|| 58 ||</span></div>
+        <div class="sloka">తతస్తైర్వానరశ్రేష్ఠైరానీతం ప్రేక్ష్య తజ్జలం |<br>అభిషేకాయ రామస్య శత్రుఘ్నః సచివైః సహ
+            |<br>పురోహితాయ శ్రేష్ఠాయ సుహృద్భ్యశ్చ న్యవేదయత్ <span class="number">|| 59 ||</span></div>
+        <div class="sloka">తతః స ప్రయతో వృద్ధో వసిష్ఠో బ్రాహ్మణైః సహ |<br>రామం రత్నమయే పీఠే సహసీతం న్యవేశయత్ <span
+                class="number">|| 60 ||</span></div>
+        <div class="sloka">వసిష్ఠో వామదేవశ్చ జాబాలిరథ కాశ్యపః |<br>కాత్యాయనః సుయజ్ఞశ్చ గౌతమో విజయస్తథా <span
+                class="number">|| 61 ||</span></div>
+        <div class="sloka">అభ్యషించన్నరవ్యాఘ్రం ప్రసన్నేన సుగంధినా |<br>సలిలేన సహస్రాక్షం వసవో వాసవం యథా <span
+                class="number">|| 62 ||</span></div>
+        <div class="sloka">ఋత్విగ్భిర్బ్రాహ్మణైః పూర్వం కన్యాభిర్మంత్రిభిస్తథా |<br>యోధైశ్చైవాభ్యషించంస్తే సంప్రహృష్టాః
+            సనైగమైః <span class="number">|| 63 ||</span></div>
+        <div class="sloka">సర్వౌషధిరసైర్దివ్యైర్దైవతైర్నభసి స్థితైః |<br>చతుర్భిర్లోకపాలైశ్చ సర్వైర్దేవైశ్చ సంగతైః <span
+                class="number">|| 64 ||</span></div>
+        <div class="sloka">బ్రహ్మణా నిర్మితం పూర్వం కిరీటం రత్నశోభితం |<br>అభిషిక్తః పురా యేన మనుస్తం దీప్తతేజసం <span
+                class="number">|| 65 ||</span></div>
+        <div class="sloka">తస్యాన్వవాయే రాజానః క్రమాద్యేనాభిషేచితాః |<br>సభాయాం హేమక్లుప్తాయాం శోభితాయాం మహాధనైః
+            |<br>రత్నైర్నానావిధైశ్చైవ చిత్రితాయాం సుశోభనైః <span class="number">|| 66 ||</span></div>
+        <div class="sloka">నానారత్నమయే పీఠే కల్పయిత్వా యథావిధి |<br>కిరీటేన తతః పశ్చాద్వసిష్ఠేన మహాత్మనా
+            |<br>ఋత్విగ్భిర్భూషణైశ్చైవ సమయోక్ష్యత రాఘవః <span class="number">|| 67 ||</span></div>
+        <div class="sloka">ఛత్రం తు తస్య జగ్రాహ శత్రుఘ్నః పాండురం శుభం |<br>శ్వేతం చ వాలవ్యజనం సుగ్రీవో వానరేశ్వరః
+            |<br>అపరం చంద్రసంకాశం రాక్షసేంద్రో విభీషణః <span class="number">|| 68 ||</span></div>
+        <div class="sloka">మాలాం జ్వలంతీం వపుషా కాంచనీం శతపుష్కరాం |<br>రాఘవాయ దదౌ వాయుర్వాసవేన ప్రచోదితః <span
+                class="number">|| 69 ||</span></div>
+        <div class="sloka">సర్వరత్నసమాయుక్తం మణిరత్నవిభూషితం |<br>ముక్తాహారం నరేంద్రాయ దదౌ శక్రప్రచోదితః <span
+                class="number">|| 70 ||</span></div>
+        <div class="sloka">ప్రజగుర్దేవగంధర్వా ననృతుశ్చాప్సరోగణాః |<br>అభిషేకే తదర్హస్య తదా రామస్య ధీమతః <span
+                class="number">|| 71 ||</span></div>
+        <div class="sloka">భూమిః సస్యవతీ చైవ ఫలవంతశ్చ పాదపాః |<br>గంధవంతి చ పుష్పాణి బభూవూ రాఘవోత్సవే <span
+                class="number">|| 72 ||</span></div>
+        <div class="sloka">సహస్రశతమశ్వానాం ధేనూనాం చ గవాం తథా |<br>దదౌ శతం వృషాన్పూర్వం ద్విజేభ్యో మనుజర్షభః <span
+                class="number">|| 73 ||</span></div>
+        <div class="sloka">త్రింశత్కోటీర్హిరణ్యస్య బ్రాహ్మణేభ్యో దదౌ పునః |<br>నానాభరణవస్త్రాణి మహార్హాణి చ రాఘవః <span
+                class="number">|| 74 ||</span></div>
+        <div class="sloka">అర్కరశ్మిప్రతీకాశాం కాంచనీం మణివిగ్రహాం |<br>సుగ్రీవాయ స్రజం దివ్యాం ప్రాయచ్ఛన్మనుజర్షభః
+            <span class="number">|| 75 ||</span>
+        </div>
+        <div class="sloka">వైడూర్యమణిచిత్రే చ వజ్రరత్నవిభూషితే |<br>వాలిపుత్రాయ ధృతిమానంగదాయాంగదే దదౌ <span
+                class="number">|| 76 ||</span></div>
+        <div class="sloka">మణిప్రవరజుష్టం చ ముక్తాహారమనుత్తమం |<br>సీతాయై ప్రదదౌ రామశ్చంద్రరశ్మిసమప్రభం <span
+                class="number">|| 77 ||</span></div>
+        <div class="sloka">అరజే వాససీ దివ్యే శుభాన్యాభరణాని చ |<br>అవేక్షమాణా వైదేహీ ప్రదదౌ వాయుసూనవే <span
+                class="number">|| 78 ||</span></div>
+        <div class="sloka">అవముచ్యాత్మనః కంఠాద్ధారం జనకనందినీ |<br>అవైక్షత హరీన్సర్వాన్భర్తారం చ ముహుర్ముహుః <span
+                class="number">|| 79 ||</span></div>
+        <div class="sloka">తామింగితజ్ఞః సంప్రేక్ష్య బభాషే జనకాత్మజాం |<br>ప్రదేహి సుభగే హారం యస్య తుష్టాసి భామిని
+            |<br>పౌరుషం విక్రమో బుద్ధిర్యస్మిన్నేతాని సర్వశః <span class="number">|| 80 ||</span></div>
+        <div class="sloka">దదౌ సా వాయుపుత్రాయ తం హారమసితేక్షణా |<br>హనుమాంస్తేన హారేణ శుశుభే వానరర్షభః
+            |<br>చంద్రాంశుచయగౌరేణ శ్వేతాభ్రేణ యథాఽచలః <span class="number">|| 81 ||</span></div>
+        <div class="sloka">తతో ద్వివిదమైందాభ్యాం నీలాయ చ పరన్తపః |<br>సర్వాన్కామగుణాన్వీక్ష్య ప్రదదౌ వసుధాధిపః <span
+                class="number">|| 82 ||</span></div>
+        <div class="sloka">సర్వవానరవృద్ధాశ్చ యే చాన్యే వానరేశ్వరాః |<br>వాసోభిర్భూషణైశ్చైవ యథార్హం ప్రతిపూజితాః <span
+                class="number">|| 83 ||</span></div>
+        <div class="sloka">విభీషణోఽథ సుగ్రీవో హనుమాన్ జాంబవాంస్తథా |<br>సర్వవానరముఖ్యాశ్చ రామేణాక్లిష్టకర్మణా <span
+                class="number">|| 84 ||</span></div>
+        <div class="sloka">యథార్హం పూజితాః సర్వైః కామై రత్నైశ్చ పుష్కలైః |<br>ప్రహృష్టమనసః సర్వే జగ్మురేవ యథాగతం <span
+                class="number">|| 85 ||</span></div>
+        <div class="sloka">నత్వా సర్వే మహాత్మానం తతస్తే ప్లవగర్షభాః |<br>విసృష్టాః పార్థివేంద్రేణ కిష్కింధామభ్యుపాగమన్
+            <span class="number">|| 86 ||</span>
+        </div>
+        <div class="sloka">సుగ్రీవో వానరశ్రేష్ఠో దృష్ట్వా రామాభిషేచనం |<br>పూజితశ్చైవ రామేణ కిష్కింధాం ప్రావిశత్పురీం
+            <span class="number">|| 87 ||</span>
+        </div>
+        <div class="sloka">విభీషణోఽపి ధర్మాత్మా సహ తైర్నైరృతర్షభైః |<br>లబ్ధ్వా కులధనం రాజా లంకాం ప్రాయాద్విభీషణః <span
+                class="number">|| 88 ||</span></div>
+        <div class="sloka">స రాజ్యమఖిలం శాసన్నిహతారిర్మహాయశాః |<br>రాఘవః పరమోదారః శశాస పరయా ముదా <span class="number">||
+                89 ||</span></div>
+        <div class="sloka">ఉవాచ లక్ష్మణం రామో ధర్మజ్ఞం ధర్మవత్సలః <span class="number">|| 90 ||</span></div>
+        <div class="sloka">ఆతిష్ఠ ధర్మజ్ఞ మయా సహేమాం<br>గాం పూర్వరాజాధ్యుషితాం బలేన |<br>తుల్యం మయా త్వం పితృభిర్ధృతా
+            యా<br>తాం యౌవరాజ్యే ధురముద్వహస్వ <span class="number">|| 91 ||</span></div>
+        <div class="sloka">సర్వాత్మనా పర్యనునీయమానో<br>యదా న సౌమిత్రిరుపైతి యోగం |<br>నియుజ్యమానోఽపి చ
+            యౌవరాజ్యే<br>తతోఽభ్యషించద్భరతం మహాత్మా <span class="number">|| 92 ||</span></div>
+        <div class="sloka">పౌండరీకాశ్వమేధాభ్యాం వాజపేయేన చాసకృత్ |<br>అన్యైశ్చ వివిధైర్యజ్ఞైరయజత్పార్థివర్షభః <span
+                class="number">|| 93 ||</span></div>
+        <div class="sloka">రాజ్యం దశసహస్రాణి ప్రాప్య వర్షాణి రాఘవః |<br>శతాశ్వమేధానాజహ్రే సదశ్వాన్భూరిదక్షిణాన్ <span
+                class="number">|| 94 ||</span></div>
+        <div class="sloka">ఆజానులంబబాహుః స మహాస్కంధః ప్రతాపవాన్ |<br>లక్ష్మణానుచరో రామః పృథివీమన్వపాలయత్ <span
+                class="number">|| 95 ||</span></div>
+        <div class="sloka">రాఘవశ్చాపి ధర్మాత్మా ప్రాప్య రాజ్యమనుత్తమం |<br>ఈజే బహువిధైర్యజ్ఞైః ససుహృజ్జ్ఞాతిబాంధవః <span
+                class="number">|| 96 ||</span></div>
+        <div class="sloka">న పర్యదేవన్విధవా న చ వ్యాలకృతం భయం |<br>న వ్యాధిజం భయం వాఽపి రామే రాజ్యం ప్రశాసతి <span
+                class="number">|| 97 ||</span></div>
+        <div class="sloka">నిర్దస్యురభవల్లోకో నానర్థః కం‍చిదస్పృశత్ |<br>న చ స్మ వృద్ధా బాలానాం ప్రేతకార్యాణి కుర్వతే
+            <span class="number">|| 98 ||</span>
+        </div>
+        <div class="sloka">సర్వం ముదితమేవాసీత్సర్వో ధర్మపరోఽభవత్ |<br>రామమేవానుపశ్యంతో నాభ్యహింసన్పరస్పరం <span
+                class="number">|| 99 ||</span></div>
+        <div class="sloka">ఆసన్వర్షసహస్రాణి తథా పుత్రసహస్రిణః |<br>నిరామయా విశోకాశ్చ రామే రాజ్యం ప్రశాసతి <span
+                class="number">|| 100 ||</span></div>
+        <div class="sloka">రామో రామో రామ ఇతి ప్రజానామభవన్కథాః |<br>రామభూతం జగదభూద్రామే రాజ్యం ప్రశాసతి <span
+                class="number">|| 101 ||</span></div>
+        <div class="sloka">నిత్యపుష్పా నిత్యఫలాస్తరవః స్కంధవిస్తృతాః |<br>కాలే వర్షీ చ పర్జన్యః సుఖస్పర్శశ్చ మారుతః
+            <span class="number">|| 102 ||</span>
+        </div>
+        <div class="sloka">బ్రాహ్మణాః క్షత్రియా వైశ్యాః శూద్రా లోభవివర్జితాః |<br>స్వకర్మసు ప్రవర్తంతే తుష్టాః స్వైరేవ
+            కర్మభిః <span class="number">|| 103 ||</span></div>
+        <div class="sloka">ఆసన్ప్రజా ధర్మరతా రామే శాసతి నానృతాః |<br>సర్వే లక్షణసంపన్నాః సర్వే ధర్మపరాయణాః <span
+                class="number">|| 104 ||</span></div>
+        <div class="sloka">దశ వర్షసహస్రాణి దశ వర్షశతాని చ |<br>భ్రాతృభిః సహితః శ్రీమాన్రామో రాజ్యమకారయత్ <span
+                class="number">|| 105 ||</span></div>
+        <div class="sloka">ధన్యం యశస్యమాయుష్యం రాజ్ఞాం చ విజయావహం |<br>ఆదికావ్యమిదం త్వార్షం పురా వాల్మీకినా కృతం
+            |<br>యః పఠేచ్ఛృణుయాల్లోకే నరః పాపాద్విముచ్యతే <span class="number">|| 106 ||</span></div>
+        <div class="sloka">పుత్రకామస్తు పుత్రాన్వై ధనకామో ధనాని చ |<br>లభతే మనుజో లోకే శ్రుత్వా రామాభిషేచనం <span
+                class="number">|| 107 ||</span></div>
+        <div class="sloka">మహీం విజయతే రాజా రిపూంశ్చాప్యధితిష్ఠతి |<br>రాఘవేణ యథా మాతా సుమిత్రా లక్ష్మణేన చ <span
+                class="number">|| 108 ||</span></div>
+        <div class="sloka">భరతేనేవ కైకేయీ జీవపుత్రాస్తథా స్త్రియః |<br>భవిష్యంతి సదానందాః పుత్రపౌత్రసమన్వితాః <span
+                class="number">|| 109 ||</span></div>
+        <div class="sloka">శ్రుత్వా రామాయణమిదం దీర్ఘమాయుశ్చ విన్దతి |<br>రామస్య విజయం చైవ సర్వమక్లిష్టకర్మణః <span
+                class="number">|| 110 ||</span></div>
+        <div class="sloka">శృణోతి య ఇదం కావ్యమార్షం వాల్మీకినా కృతం |<br>శ్రద్దధానో జితక్రోధో దుర్గాణ్యతితరత్యసౌ <span
+                class="number">|| 111 ||</span></div>
+        <div class="sloka">సమాగమం ప్రవాసాంతే లభతే చాపి బాంధవైః |<br>ప్రార్థితాంశ్చ వరాన్సర్వాన్ప్రాప్నుయాదిహ రాఘవాత్
+            <span class="number">|| 112 ||</span>
+        </div>
+        <div class="sloka">శ్రవణేన సురాః సర్వే ప్రీయంతే సం‍ప్రశృణ్వతాం |<br>వినాయకాశ్చ శాంయంతి గృహే తిష్ఠంతి యస్య వై
+            <span class="number">|| 113 ||</span>
+        </div>
+        <div class="sloka">విజయేతి మహీం రాజా ప్రవాసీ స్వస్తిమాన్వ్రజేత్ |<br>స్త్రియో రజస్వలాః శ్రుత్వా పుత్రాన్
+            సూయురనుత్తమాన్ <span class="number">|| 114 ||</span></div>
+        <div class="sloka">పూజయంశ్చ పఠంశ్చేమమితిహాసం పురాతనం |<br>సర్వపాపాత్ప్రముచ్యేత దీర్ఘమాయురవాప్నుయాత్ <span
+                class="number">|| 115 ||</span></div>
+        <div class="sloka">ప్రణంయ శిరసా నిత్యం శ్రోతవ్యం క్షత్రియైర్ద్విజాత్ |<br>ఐశ్వర్యం పుత్రలాభశ్చ భవిష్యతి న సంశయః
+            <span class="number">|| 116 ||</span>
+        </div>
+        <div class="sloka">రామాయణమిదం కృత్స్నం శృణ్వతః పఠతః సదా |<br>ప్రీయతే సతతం రామః స హి విష్ణుః సనాతనః <span
+                class="number">|| 117 ||</span></div>
+        <div class="sloka">ఆదిదేవో మహాబాహుర్హరిర్నారాయణః ప్రభుః |<br>సాక్షాద్రామో రఘుశ్రేష్ఠః శేషో లక్ష్మణ ఉచ్యతే <span
+                class="number">|| 118 ||</span></div>
+        <div class="sloka">కుటుంబవృద్ధిం ధనధాన్యవృద్ధిం<br>స్త్రియశ్చ ముఖ్యాః సుఖముత్తమం చ |<br>శృత్వా శుభం కావ్యమిదం
+            మహార్థం<br>ప్రాప్నోతి సర్వాం భువి చార్థసిద్ధిం <span class="number">|| 119 ||</span></div>
+        <div class="sloka">ఆయుష్యమారోగ్యకరం యశస్యం<br>సౌభ్రాతృకం బుద్ధికరం సుఖం చ |<br>శ్రోతవ్యమేతన్నియమేన
+            సద్భి-<br>-రాఖ్యానమోజస్కరమృద్ధికామైః <span class="number">|| 120 ||</span></div>
+        <div class="sloka">ఏవమేతత్పురావృత్తమాఖ్యానం భద్రమస్తు వః |<br>ప్రవ్యాహరత విస్రబ్ధం బలం విష్ణోః ప్రవర్ధతాం <span
+                class="number">|| 121 ||</span></div>
+        <div class="sloka">దేవాశ్చ సర్వే తుష్యంతి గ్రహణాచ్ఛ్రవణాత్తథా |<br>రామాయణస్య శ్రవణాత్తుష్యంతి పితరస్తథా <span
+                class="number">|| 122 ||</span></div>
+        <div class="sloka">భక్త్యా రామస్య యే చేమాం సంహితామృషిణా కృతాం |<br>లేఖయంతీహ చ నరాస్తేషాం వాసస్త్రివిష్టపే <span
+                class="number">|| 123 ||</span></div>
+        <div class="sloka" style="font-weight: 600; color: var(--accent-color);">ఇత్యార్షే శ్రీమద్రామాయణే వాల్మీకీయే
+            ఆదికావ్యే చతుర్వింశతిసహస్రికాయాం సంహితాయాం యుద్ధకాండే శ్రీరామపట్టాభిషేకో నామ ఏకత్రింశదుత్తరశతతమః సర్గః <span
+                class="number">|| 124 ||</span></div>
+    </div>
+
+    <script>
+        const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+        const currentTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            toggleSwitch.checked = true;
+        }
+
+        toggleSwitch.addEventListener('change', function (e) {
+            if (e.target.checked) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        }, false);
+    </script>
 </body>
+
 </html>
